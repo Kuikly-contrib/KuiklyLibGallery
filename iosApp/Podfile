@@ -1,0 +1,25 @@
+source 'https://cdn.cocoapods.org/'
+
+target 'iosApp' do
+  use_frameworks!
+  platform :ios, '14.1'
+  # 更新 OpenKuiklyIOSRender 版本以匹配 Kuikly Kotlin 库版本 2.15.0
+  pod 'OpenKuiklyIOSRender' , '~> 2.15.0'
+  pod 'shared', :path => '../shared'
+
+  pod 'SDWebImage'
+  # kLottieView - Lottie 动画组件
+  pod 'KuiklyLottieView', :git => 'https://github.com/Kuikly-contrib/KuiklyLottieView.git', :tag => '1.0.0'
+  # MMKV - 高性能 KV 存储组件
+  pod 'MMKV', '1.2.14'
+
+end
+
+# 统一所有 Pod 的最低 iOS 部署目标为 14.1，解决 Lottie 等库的版本兼容问题
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '14.1'
+    end
+  end
+end
