@@ -60,12 +60,16 @@ kotlin {
                 // okio 依赖
                 implementation("com.squareup.okio:okio:3.9.10-KBA-001")
                 // coroutine 依赖
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-KBA-001")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core"){
+                    version{ strictly("1.8.0-KBA-002") }
+                }
+                // kuiklyx 协程库 用于切换到kuikly线程
+                implementation("com.tencent.kuiklyx-open:coroutines:1.5.0-2.0.21")
                 // lifecycle 依赖
                 implementation("androidx.lifecycle:lifecycle-common:2.8.0-KBA-011")
                 implementation("androidx.lifecycle:lifecycle-runtime:2.8.0-KBA-011")
                 implementation("androidx.lifecycle:lifecycle-viewmodel:2.8.0-KBA-011")
-                // ktor
+                // 网络库
                 implementation("com.tencent.kuiklybase:network:0.0.4")
                 // jce
                 implementation("com.tencent.kuiklybase:jce:1.7.12-2.0.21")

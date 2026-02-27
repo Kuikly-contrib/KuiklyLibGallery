@@ -3,8 +3,8 @@ source 'https://cdn.cocoapods.org/'
 target 'iosApp' do
   use_frameworks!
   platform :ios, '14.1'
-  # 更新 OpenKuiklyIOSRender 版本以匹配 Kuikly Kotlin 库版本 2.15.0
-  pod 'OpenKuiklyIOSRender' , '~> 2.15.0'
+  # 更新 OpenKuiklyIOSRender 版本以匹配 Kuikly Kotlin 库版本 2.7.0
+  pod 'OpenKuiklyIOSRender' , '~> 2.11.0'
   pod 'shared', :path => '../shared'
 
   pod 'SDWebImage'

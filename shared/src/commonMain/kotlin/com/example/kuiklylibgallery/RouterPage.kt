@@ -146,7 +146,7 @@ internal class RouterPage : BasePager() {
                         gradientColors = listOf(0xFF00BFA5, 0xFF1DE9B6)
                     ) {
                         ctx.acquireModule<RouterModule>(RouterModule.MODULE_NAME)
-                            .openPage("KtorDemoPage")
+                            .openPage("NetworkDemoPage")
                     }
 
                     // JsonMate 卡片

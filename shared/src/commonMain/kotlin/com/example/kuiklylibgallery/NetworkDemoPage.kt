@@ -13,8 +13,18 @@ import com.tencent.kmm.network.export.VBTransportGetRequest
 import com.tencent.kmm.network.export.VBTransportPostRequest
 import com.tencent.kmm.network.export.VBTransportContentType
 import com.tencent.kmm.network.export.VBTransportResultCode
+import com.tencent.kuikly.core.log.KLog
+import com.tencent.kuikly.core.reactive.handler.observable
+import com.tencent.kuiklyx.coroutines.Kuikly
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.IO
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.suspendCancellableCoroutine
+import kotlinx.coroutines.withContext
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import kotlin.coroutines.resume
 
 private const val TAG = "KtorDemoPage"
 
@@ -24,8 +34,12 @@ private const val TAG = "KtorDemoPage"
  * 
  * 与官方 demo 保持一致，回调中只在控制台打印日志，不更新 UI
  */
-@Page("KtorDemoPage")
+@Page("NetworkDemoPage")
 internal class KtorDemoPage : BasePager() {
+    
+    val ctx = this
+    var response by observable("等待请求结果...")
+
 
     override fun pageDidAppear() {
         // 页面加载后自动发起所有请求
@@ -49,13 +63,30 @@ internal class KtorDemoPage : BasePager() {
             useCurl = false
         }
 
-        VBTransportService.sendGetRequest(request) { response ->
-            if (response.errorCode == VBTransportResultCode.CODE_OK) {
-                val dataStr = response.data?.toString() ?: ""
-                println("[$TAG] GET 请求成功！响应数据长度: ${dataStr.length} 字符")
-                println("[$TAG] 响应内容 (前500字符): ${dataStr.take(500)}")
+        // 在 IO 线程执行请求，拿到结果后切到 Kuikly 线程更新 observable，触发 UI 刷新
+        GlobalScope.launch(Dispatchers.Kuikly[ctx]) {
+            val dataStr = suspendCancellableCoroutine<String> { continuation ->
+                VBTransportService.sendGetRequest(request) { response ->
+                    val result = if (response.errorCode == VBTransportResultCode.CODE_OK) {
+                        response.data?.toString() ?: ""
+                    } else {
+                        "请求失败，错误码: ${response.errorCode}, 错误信息: ${response.errorMessage}"
+                    }
+                    if (continuation.isActive) {
+                        continuation.resume(result)
+                    }
+                }
+            }
+
+            withContext(Dispatchers.Kuikly[ctx]) {
+                response = dataStr
+            }
+
+            if (dataStr.startsWith("请求失败")) {
+                KLog.i(TAG,"GET 请求失败: $dataStr")
             } else {
-                println("[$TAG] GET 请求失败，错误码: ${response.errorCode}, 错误信息: ${response.errorMessage}")
+                KLog.i(TAG,"GET 请求成功！响应数据长度: ${dataStr.length} 字符")
+                KLog.i(TAG,"响应内容 (前500字符): ${dataStr.take(500)}")
             }
         }
     }
@@ -231,6 +262,41 @@ internal class KtorDemoPage : BasePager() {
                             fontSize(14f)
                             color(Color(0xFF424242))
                             lineHeight(22f)
+                        }
+                    }
+                }
+
+                // 请求结果（observable 绑定）
+                View {
+                    attr {
+                        margin(16f)
+                        marginBottom(8f)
+                        padding(12f)
+                        backgroundColor(Color(0xFF4CAF50))
+                        borderRadius(8f)
+                    }
+                    Text {
+                        attr {
+                            text("实时响应（来自 observable）")
+                            fontSize(16f)
+                            fontWeightBold()
+                            color(Color.WHITE)
+                        }
+                    }
+                }
+                View {
+                    attr {
+                        margin(16f)
+                        padding(12f)
+                        backgroundColor(Color(0xFFE8F5E9))
+                        borderRadius(8f)
+                    }
+                    Text {
+                        attr {
+                            text(this@KtorDemoPage.response.take(600))
+                            fontSize(13f)
+                            color(Color(0xFF1B5E20))
+                            lineHeight(20f)
                         }
                     }
                 }
