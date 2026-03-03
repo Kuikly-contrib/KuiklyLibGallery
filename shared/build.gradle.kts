@@ -86,7 +86,7 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-val androidMain by getting {
+        val androidMain by getting {
             dependencies {
                 api("com.tencent.kuikly-open:core-render-android:${Version.getKuiklyVersion()}")
             }

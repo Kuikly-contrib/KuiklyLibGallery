@@ -22,7 +22,10 @@ import com.example.kuiklylibgallery.adapter.KRThreadAdapter
 import com.example.kuiklylibgallery.adapter.KRUncaughtExceptionHandlerAdapter
 import com.example.kuiklylibgallery.module.KRBridgeModule
 import com.example.kuiklylibgallery.module.KRShareModule
+import com.example.kuiklylibgallery.module.DemoPluginNative
 import com.kuikly.lottieview_android.AndroidLottieView
+import com.tencent.kuiklyx.knative.bridge.KRBridgeModule as KRXBridgeModule
+import com.tencent.kuiklyx.knative.bridge.KuiklyPluginManager
 import org.json.JSONObject
 
 class KuiklyRenderActivity : AppCompatActivity(), KuiklyRenderViewBaseDelegatorDelegate {
@@ -78,6 +81,10 @@ class KuiklyRenderActivity : AppCompatActivity(), KuiklyRenderViewBaseDelegatorD
             moduleExport(KRShareModule.MODULE_NAME) {
                 KRShareModule()
             }
+            // 注册 kuiklyx-bridge 的 BridgeModule
+            moduleExport(KRXBridgeModule.MODULE_NAME) {
+                KRXBridgeModule()
+            }
         }
     }
 
@@ -121,6 +128,8 @@ class KuiklyRenderActivity : AppCompatActivity(), KuiklyRenderViewBaseDelegatorD
 
         init {
             initKuiklyAdapter()
+            // 注册 kuiklyx-bridge 插件
+            KuiklyPluginManager.registerPlugin("demo", DemoPluginNative())
         }
 
         fun start(context: Context, pageName: String, pageData: JSONObject) {

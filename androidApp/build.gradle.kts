@@ -47,4 +47,7 @@ dependencies {
 
     // MMKV - KV 存储组件
     implementation("com.tencent:mmkv:2.0.1")
+
+    // kuiklybase-bridge - 统一插件路由组件
+    implementation("com.tencent.kuiklybase:bridge:1.0.1-2.0.21")
 }
