@@ -1,0 +1,53 @@
+PODS:
+  - KuiklyLottieView (1.0.0):
+    - lottie-ios
+    - OpenKuiklyIOSRender
+  - lottie-ios (4.6.0)
+  - MMKV (1.2.14):
+    - MMKVCore (~> 1.2.14)
+  - MMKVCore (1.2.16)
+  - OpenKuiklyIOSRender (2.11.0)
+  - SDWebImage (5.21.6):
+    - SDWebImage/Core (= 5.21.6)
+  - SDWebImage/Core (5.21.6)
+  - shared (1.0)
+
+DEPENDENCIES:
+  - KuiklyLottieView (from `https://github.com/Kuikly-contrib/KuiklyLottieView.git`, tag `1.0.0`)
+  - MMKV (= 1.2.14)
+  - OpenKuiklyIOSRender (~> 2.11.0)
+  - SDWebImage
+  - shared (from `../shared`)
+
+SPEC REPOS:
+  trunk:
+    - lottie-ios
+    - MMKV
+    - MMKVCore
+    - OpenKuiklyIOSRender
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  KuiklyLottieView:
+    :git: https://github.com/Kuikly-contrib/KuiklyLottieView.git
+    :tag: 1.0.0
+  shared:
+    :path: "../shared"
+
+CHECKOUT OPTIONS:
+  KuiklyLottieView:
+    :git: https://github.com/Kuikly-contrib/KuiklyLottieView.git
+    :tag: 1.0.0
+
+SPEC CHECKSUMS:
+  KuiklyLottieView: 2ac7bbc70d5dd3a96bf1077b93783e42ff862ddb
+  lottie-ios: 8f959969761e9c45d70353667d00af0e5b9cadb3
+  MMKV: 9c4663aa7ca255d478ff10f2f5cb7d17c1651ccd
+  MMKVCore: 9cfef4c48c6c46f66226fc2e4634d78490206a48
+  OpenKuiklyIOSRender: 6bd32b240d5d1af696d7af0bc6804a7649a2a137
+  SDWebImage: 1bb6a1b84b6fe87b972a102bdc77dd589df33477
+  shared: 45c4d5a3fe6bf89e105d0ff0f3587f64ad21dd48
+
+PODFILE CHECKSUM: f658a74621d8693cacaa67ed8cb80812e1b5b746
+
+COCOAPODS: 1.16.2

@@ -53,8 +53,10 @@ kotlin {
     // ohosArm64 专用依赖配置
     val ohosArm64Main by sourceSets.getting {
         dependencies {
-            // kLottieView - Lottie 动画组件 (仅 Ohos)
+            // kLottieView - Lottie 动画组件
             implementation("com.tencent.kuiklybase:kLottieView:1.0.0-ohos")
+            // kuiklyx-bridge - 统一插件路由组件
+            implementation("com.tencent.kuiklybase:shared_bridge-ohosarm64:1.0.1-2.0.21-KBA-010")
         }
     }
 
@@ -93,8 +95,6 @@ kotlin {
                 implementation("com.tencent.kuiklybase:jce:1.7.13-2.0.21-KBA-010")
                 // mmkvKotlin - 跨端 KV 存储组件
                 implementation("com.tencent.kuiklybase:mmkvKotlin:1.1.2")
-                // kuiklyx-bridge - 统一插件路由组件
-                implementation("com.tencent.kuiklybase:shared_bridge:1.0.1-2.0.21-KBA-010")
                 // JsonMate
             }
         }
