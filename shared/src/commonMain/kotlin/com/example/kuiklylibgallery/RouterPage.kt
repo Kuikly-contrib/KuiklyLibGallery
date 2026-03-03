@@ -193,6 +193,17 @@ internal class RouterPage : BasePager() {
                             .openPage("MMKVDemoPage")
                     }
 
+                    // Bridge 卡片
+                    ctx.createDemoCard(
+                        this,
+                        title = "Bridge",
+                        description = "kuiklyx-bridge 统一插件路由",
+                        gradientColors = listOf(0xFF00BCD4, 0xFF009688)
+                    ) {
+                        ctx.acquireModule<RouterModule>(RouterModule.MODULE_NAME)
+                            .openPage("BridgeDemoPage")
+                    }
+
                     // 底部间距
                     View {
                         attr {

@@ -15,6 +15,7 @@
 		3FDCFB96518F86B53D4E5ADD /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28A2BBF98AD622240C0C6069 /* Pods_iosApp.framework */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		FF6B714429A2A174009349F1 /* KuiklyRenderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B713F29A2A173009349F1 /* KuiklyRenderViewController.m */; };
+		AA0000000000000000000001 /* DemoPluginNative.m in Sources */ = {isa = PBXBuildFile; fileRef = AA0000000000000000000002 /* DemoPluginNative.m */; };
 		FF6B714529A2A174009349F1 /* HRBridgeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B714129A2A173009349F1 /* HRBridgeModule.m */; };
 		FF6B714729A2A315009349F1 /* KuiklyRenderViewPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6B714629A2A315009349F1 /* KuiklyRenderViewPage.swift */; };
 		FF6B715029A2A6FF009349F1 /* KuiklyRenderComponentExpandHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF6B714F29A2A6FF009349F1 /* KuiklyRenderComponentExpandHandler.m */; };
@@ -35,6 +36,8 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAD586BEDBD0772EDC4E4B96 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
 		FF6B713F29A2A173009349F1 /* KuiklyRenderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KuiklyRenderViewController.m; sourceTree = "<group>"; };
+		AA0000000000000000000002 /* DemoPluginNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoPluginNative.m; sourceTree = "<group>"; };
+		AA0000000000000000000003 /* DemoPluginNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoPluginNative.h; sourceTree = "<group>"; };
 		FF6B714129A2A173009349F1 /* HRBridgeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HRBridgeModule.m; sourceTree = "<group>"; };
 		FF6B714229A2A173009349F1 /* HRBridgeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HRBridgeModule.h; sourceTree = "<group>"; };
 		FF6B714329A2A174009349F1 /* KuiklyRenderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KuiklyRenderViewController.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 			children = (
 				FF6B714129A2A173009349F1 /* HRBridgeModule.m */,
 				FF6B714229A2A173009349F1 /* HRBridgeModule.h */,
+				AA0000000000000000000002 /* DemoPluginNative.m */,
+				AA0000000000000000000003 /* DemoPluginNative.h */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -300,6 +305,7 @@
 				0474A3F329F6A41000F43E31 /* UINavigationController+FDFullscreenPopGesture.m in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				FF6B714529A2A174009349F1 /* HRBridgeModule.m in Sources */,
+				AA0000000000000000000001 /* DemoPluginNative.m in Sources */,
 				FF6B714729A2A315009349F1 /* KuiklyRenderViewPage.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				FF6B715029A2A6FF009349F1 /* KuiklyRenderComponentExpandHandler.m in Sources */,

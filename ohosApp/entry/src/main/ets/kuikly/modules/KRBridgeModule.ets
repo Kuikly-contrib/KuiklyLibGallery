@@ -6,6 +6,8 @@ import { KuiklyRenderCallback } from '@kuikly-open/render';
 import util from '@ohos.util';
 import fs from '@ohos.file.fs';
 import { fileUri } from '@kit.CoreFileKit';
+import { promptAction } from '@kit.ArkUI';
+import { deviceInfo } from '@kit.BasicServicesKit';
 
 export class KRBridgeModule extends KuiklyRenderBaseModule {
   static readonly MODULE_NAME = "HRBridgeModule";
@@ -75,9 +77,89 @@ export class KRBridgeModule extends KuiklyRenderBaseModule {
         break;
       }
       default:
-        break;
+        // kuiklyx-bridge 插件路由: 处理 "pluginName.methodName" 格式
+        return this.handleBridgePlugin(method, params, callback);
     }
     return null;
+  }
+
+  /**
+   * 处理 kuiklyx-bridge 插件路由
+   * 方法格式: "pluginName.methodName"，如 "demo.showToast"
+   */
+  private handleBridgePlugin(method: string, params: KRAny, callback: KuiklyRenderCallback): KRAny {
+    const dotIndex = method.indexOf('.');
+    if (dotIndex < 0) {
+      callback?.({ "code": -1, "msg": `方法不存在: ${method}` });
+      return null;
+    }
+    const pluginName = method.substring(0, dotIndex);
+    const methodName = method.substring(dotIndex + 1);
+
+    switch (pluginName) {
+      case 'demo':
+        return this.handleDemoPlugin(methodName, params, callback);
+      default:
+        callback?.({ "code": -1, "msg": `未知插件: ${pluginName}` });
+        return null;
+    }
+  }
+
+  /**
+   * Demo 插件方法分发
+   */
+  private handleDemoPlugin(method: string, params: KRAny, callback: KuiklyRenderCallback): KRAny {
+    switch (method) {
+      case 'showToast': {
+        const message = (params as string) || 'Hello';
+        promptAction.showToast({
+          message: message,
+          duration: 2000
+        });
+        callback?.({ "code": 0, "msg": "success" });
+        return null;
+      }
+      case 'getDeviceInfo': {
+        const info: Record<string, string> = {
+          "brand": deviceInfo.brand || "Unknown",
+          "model": deviceInfo.productModel || "Unknown",
+          "osVersion": deviceInfo.osFullName || "Unknown",
+          "platform": "HarmonyOS"
+        };
+        callback?.({
+          "code": 0,
+          "msg": "success",
+          "data": info
+        });
+        return null;
+      }
+      case 'getTimestamp': {
+        return Date.now().toString();
+      }
+      case 'openUrl': {
+        const url = (params as string) || '';
+        if (url.length > 0) {
+          try {
+            const context = getContext(this) as common.UIAbilityContext;
+            const want: Record<string, string> = {
+              "uri": url,
+              "action": "ohos.want.action.viewData"
+            };
+            // 尝试打开浏览器
+            context.startAbility({ uri: url, action: 'ohos.want.action.viewData' });
+            callback?.({ "code": 0, "msg": "success" });
+          } catch (e) {
+            callback?.({ "code": -1, "msg": `打开URL失败: ${(e as Error).message}` });
+          }
+        } else {
+          callback?.({ "code": -1, "msg": "URL为空" });
+        }
+        return null;
+      }
+      default:
+        callback?.({ "code": -1, "msg": `未知方法: demo.${method}` });
+        return null;
+    }
   }
 
   private showAlert(params: KRAny, callback: KuiklyRenderCallback) {

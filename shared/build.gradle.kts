@@ -77,6 +77,8 @@ kotlin {
                 implementation("com.tencent.kuiklybase:kLottieView:1.0.0")
                 // mmkvKotlin - 跨端 KV 存储组件 (排除其自带的 mmkv 传递依赖)
                 implementation("com.tencent.kuiklybase:mmkvKotlin:1.1.2")
+                // kuiklyx-bridge - 统一插件路由组件
+                implementation("com.tencent.kuiklybase:shared_bridge:1.0.1-2.0.21")
             }
         }
         val commonTest by getting {
