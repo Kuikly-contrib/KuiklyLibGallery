@@ -13,9 +13,6 @@ pluginManagement {
 dependencyResolutionManagement {
     repositories {
         maven {
-            url = uri("https://mirrors.tencent.com/repository/maven/kuikly-open/")
-        }
-        maven {
             url = uri("https://mirrors.tencent.com/nexus/repository/maven-tencent/")
         }
         google()

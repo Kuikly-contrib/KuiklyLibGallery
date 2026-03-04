@@ -15,9 +15,6 @@ dependencyResolutionManagement {
         maven {
             url = uri("https://mirrors.tencent.com/nexus/repository/maven-tencent/")
         }
-        maven {
-            url = uri("https://mirrors.tencent.com/repository/maven/kuikly/")
-        }
         google()
         mavenCentral()
         gradlePluginPortal()
