@@ -200,6 +200,17 @@ internal class RouterPage : BasePager() {
                             .openPage("BridgeDemoPage")
                     }
 
+                    // ViewModel 卡片
+                    ctx.createDemoCard(
+                        this,
+                        title = "ViewModel",
+                        description = "kuiklyx-viewmodel 生命周期管理",
+                        gradientColors = listOf(0xFF7C4DFF, 0xFFB388FF)
+                    ) {
+                        ctx.acquireModule<RouterModule>(RouterModule.MODULE_NAME)
+                            .openPage("ViewModelDemoPage")
+                    }
+
                     // 底部间距
                     View {
                         attr {

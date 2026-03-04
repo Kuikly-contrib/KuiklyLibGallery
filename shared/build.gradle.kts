@@ -79,6 +79,8 @@ kotlin {
                 implementation("com.tencent.kuiklybase:mmkvKotlin:1.1.2")
                 // kuiklyx-bridge - 统一插件路由组件
                 implementation("com.tencent.kuiklybase:shared_bridge:1.0.1-2.0.21")
+                // kuiklyx-viewmodel
+                implementation("com.tencent.kuiklybase:viewmodel:1.0.5-2.0.21")
             }
         }
         val commonTest by getting {
