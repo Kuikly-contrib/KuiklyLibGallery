@@ -211,6 +211,17 @@ internal class RouterPage : BasePager() {
                             .openPage("ViewModelDemoPage")
                     }
 
+                    // Redux 卡片
+                    ctx.createDemoCard(
+                        this,
+                        title = "Redux",
+                        description = "kuiklyx-redux 全局状态管理",
+                        gradientColors = listOf(0xFF764BA2, 0xFFF093FB)
+                    ) {
+                        ctx.acquireModule<RouterModule>(RouterModule.MODULE_NAME)
+                            .openPage("ReduxDemoPage")
+                    }
+
                     // 底部间距
                     View {
                         attr {

@@ -59,6 +59,8 @@ kotlin {
             implementation("com.tencent.kuiklybase:shared_bridge-ohosarm64:1.0.1-2.0.21-KBA-010")
             // kuiklyx-viewmodel
             implementation("com.tencent.kuiklybase:viewmodel-ohosarm64:1.0.5-2.0.21-KBA-010")
+            // kuiklyx-redux
+            implementation("com.tencent.kuiklybase:redux-ohosarm64:1.0.5-2.0.21-KBA-010")
         }
     }
 

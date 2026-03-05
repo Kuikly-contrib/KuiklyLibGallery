@@ -82,6 +82,7 @@ kotlin {
                 // kuiklyx-viewmodel
                 implementation("com.tencent.kuiklybase:viewmodel:1.0.5-2.0.21")
                 // kuiklyx-redux
+                implementation("com.tencent.kuiklybase:redux:1.0.5-2.0.21")
             }
         }
         val commonTest by getting {
