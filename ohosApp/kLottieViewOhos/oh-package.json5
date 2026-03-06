@@ -1,0 +1,13 @@
+{
+  "name": "kLottieViewOhos",
+  "version": "1.0.0",
+  "description": "kLottieViewOhos is a Ohos native component of kuiklyLottieView",
+  "main": "Index.ets",
+  "author": "walkman707",
+  "license": "Apache-2.0",
+  "repository": "https://github.com/walkman707/KuiklyLottie",
+  "dependencies": {
+    "@kuikly-open/render": '2.4.0',
+    "@ohos/lottie": "2.0.11"
+  }
+}
