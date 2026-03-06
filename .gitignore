@@ -7,7 +7,8 @@
 /captures
 .externalNativeBuild
 .cxx
-local.properties
+/local.properties
+!ohosApp/local.properties
 *.js
 node_modules
 Pods
