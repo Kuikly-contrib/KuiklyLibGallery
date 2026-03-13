@@ -222,6 +222,17 @@ internal class RouterPage : BasePager() {
                             .openPage("ReduxDemoPage")
                     }
 
+                    // VBSQLite 卡片
+                    ctx.createDemoCard(
+                        this,
+                        title = "VBSQLite",
+                        description = "跨平台 SQLite 数据库组件",
+                        gradientColors = listOf(0xFF2196F3, 0xFF21CBF3)
+                    ) {
+                        ctx.acquireModule<RouterModule>(RouterModule.MODULE_NAME)
+                            .openPage("SQLiteDemoPage")
+                    }
+
                     // 底部间距
                     View {
                         attr {

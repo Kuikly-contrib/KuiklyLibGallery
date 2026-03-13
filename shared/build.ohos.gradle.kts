@@ -99,6 +99,8 @@ kotlin {
                 implementation("com.tencent.kuiklybase:jce:1.7.13-2.0.21-KBA-010")
                 // mmkvKotlin - 跨端 KV 存储组件
                 implementation("com.tencent.kuiklybase:mmkvKotlin:1.1.2")
+                // VBSQLite - 跨平台 SQLite 数据库组件
+                implementation("com.tencent.kuiklybase:VBSQLite:1.0.2-2.0.21-KBA-010")
             }
         }
         val androidMain by getting {

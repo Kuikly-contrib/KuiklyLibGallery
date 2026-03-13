@@ -33,5 +33,11 @@ set_target_properties(openssl
         PROPERTIES
         IMPORTED_LOCATION ${NATIVERENDER_ROOT_PATH}/../../../libs/${OHOS_ARCH}/libopenssl.so)
 
+# sqlite3 - SQLite 数据库库（VBSQLite 依赖）
+add_library(sqlite3 SHARED IMPORTED)
+set_target_properties(sqlite3
+        PROPERTIES
+        IMPORTED_LOCATION ${NATIVERENDER_ROOT_PATH}/../../../libs/${OHOS_ARCH}/libsqlite3.so)
+
 add_library(entry SHARED napi_init.cpp)
-target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so kuikly_shared kuikly_render pbcurlwrapper openssl)
+target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so kuikly_shared kuikly_render pbcurlwrapper openssl sqlite3)
