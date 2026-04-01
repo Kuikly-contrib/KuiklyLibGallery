@@ -233,6 +233,17 @@ internal class RouterPage : BasePager() {
                             .openPage("SQLiteDemoPage")
                     }
 
+                    // KuiklyMarkdown 卡片
+                    ctx.createDemoCard(
+                        this,
+                        title = "Markdown",
+                        description = "跨端 Markdown 渲染组件",
+                        gradientColors = listOf(0xFF42A5F5, 0xFF478ED1)
+                    ) {
+                        ctx.acquireModule<RouterModule>(RouterModule.MODULE_NAME)
+                            .openPage("MarkdownDemoPage")
+                    }
+
                     // 底部间距
                     View {
                         attr {

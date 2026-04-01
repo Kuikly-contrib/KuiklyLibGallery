@@ -85,6 +85,8 @@ kotlin {
                 implementation("com.tencent.kuiklybase:redux:1.0.5-2.0.21")
                 // VBSQLite - 跨平台 SQLite 数据库组件
                 implementation("com.tencent.kuiklybase:VBSQLite:1.0.2-2.0.21")
+                // KuiklyMarkdown - Markdown 渲染组件
+                implementation("com.tencent.kuiklybase:KuiklyMarkdown:1.0.1-2.0.21")
             }
         }
         val commonTest by getting {

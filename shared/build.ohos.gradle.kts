@@ -101,6 +101,8 @@ kotlin {
                 implementation("com.tencent.kuiklybase:mmkvKotlin:1.1.2")
                 // VBSQLite - 跨平台 SQLite 数据库组件
                 implementation("com.tencent.kuiklybase:VBSQLite:1.0.2-2.0.21-KBA-010")
+                // KuiklyMarkdown - Markdown 渲染组件
+                implementation("com.tencent.kuiklybase:KuiklyMarkdown:1.0.1-2.0.21-ohos")
             }
         }
         val androidMain by getting {
